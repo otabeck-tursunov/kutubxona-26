@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kutubxona | Kitoblar</title>
+</head>
+<body>
+<h1>Kitoblar ro'yxati <a href="/kitob-qoshish/"><button>Yangi kitob</button></a></h1>
+<hr>
+{% for kitob in kitoblar %}
+  <p>{{ forloop.counter }}. {{ kitob.nom }}</p>
+{% endfor %}
+</body>
+</html>

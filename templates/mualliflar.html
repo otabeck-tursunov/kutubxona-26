@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kutubxona | Mualliflar</title>
+</head>
+<body>
+<h1>Mualliflar ro'yxati</h1>
+<hr>
+<form method="post">
+    {% csrf_token %}
+    <label>Ism: </label>
+    <input type="text" name="ism">
+    <br><br>
+    <label>Tirik: </label>
+    <input type="checkbox" name="kitob_soni">
+    <label>Jins: </label>
+    <select name="jins">
+        <option>Erkak</option>
+        <option>Ayol</option>
+    </select>
+    <br><br>
+    <label>Tug'ilgan _sana: </label>
+    <input type="date" name="t_sana">
+    <br><br>
+    <label>Kitob soni: </label>
+    <input type="number" name="kitob_soni">
+    <br><br>
+    <button>Muallif qo'shish</button>
+</form>
+<hr>
+{% for muallif in mualliflar %}
+<p>{{ forloop.counter }}. {{ muallif.ism }}
+    <a href="/mualliflar/{{ muallif.id }}/delete-confirm/">
+        <button>O'chirish</button>
+    </a>
+</p>
+{% endfor %}
+</body>
+</html>

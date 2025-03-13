@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kutubxona | Yangi kitob</title>
+</head>
+<body>
+<h1>Yangi kitob qo'shish</h1>
+<hr>
+<form method="post">
+    {% csrf_token %}
+    <label for="nom">Nom: </label><br>
+    <input type="text" name="nom" id="nom" required>
+    <br><br>
+    <label for="janr">Janr: </label><br>
+    <input type="text" name="janr" id="janr">
+    <br><br>
+    <label for="sahifa">Sahifa: </label><br>
+    <input type="text" name="sahifa" id="sahifa" required>
+    <br><br>
+    <label>Muallif: </label>
+    <select name="muallif_id">
+        {% for muallif in mualliflar %}
+            <option value="{{ muallif.id }}">{{ muallif.ism }}</option>
+        {% endfor %}
+    </select>
+    <br><br>
+    <button>Kitobni qo'shish</button>
+</form>
+</body>
+</html>

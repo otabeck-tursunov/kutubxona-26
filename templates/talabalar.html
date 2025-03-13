@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Talabalar ro'yxati</title>
+</head>
+<body>
+  <h1>Talabalar ro'yxati</h1>
+  <a href="/">Bosh sahifa</a>
+  <hr>
+  <form method="post">
+      {% csrf_token %}
+      <label>Ism: </label>
+      <input type="text" name="ism" placeholder="Ism kiriting..">
+
+      <label>Guruh: </label>
+      <input type="text" name="guruh" placeholder="Guruh kiriting..">
+      <br><br>
+
+      <label>Kurs: </label>
+      <input type="number" name="kurs" placeholder="Kurs kiriting..">
+
+      <label>Kitob soni: </label>
+      <input type="number" name="kitob_soni" value="0">
+      <button>Qo'shish</button>
+  </form>
+  <hr>
+  <form>
+      <input type="text" name="search" {% if search %} value="{{ search }}" {% endif %}>
+      <button>Qidirish</button>
+  </form>
+  <hr>
+  {% for talaba in talabalar %}
+    <p>{{ forloop.counter }}.
+        <a href="/talabalar/{{ talaba.id }}/">
+            {{ talaba.ism }}
+        </a>
+        <a href="/talabalar/{{ talaba.id }}/delete/">
+            <button>O'chirish</button>
+        </a>
+    </p>
+  {% endfor %}
+</body>
+</html>
